@@ -14,6 +14,7 @@ Currently the script only supports following sitecore XP versions and their XCon
 - 9.3 Initial Update (9.3.0)
 - 10.0 Initial Update (10.0.0)
 - 10.1 Initial Update (10.1.0)
+- 10.1 Update-1 (10.1.1)
 
 Sitecore Commerce:
 - 9.2 Initial Update (9.2.0)

@@ -5,10 +5,11 @@ settings:
   pathToWWWRoot: "C:\\inetpub\\wwwroot"
   solrUsername: ""
   solrPassword: ""
-  sitecoreVersion : "10.1.0"               # Supported versions - 9.0.2, 9.1.1, 9.2.0, 9.3.0, 10.0.0, 10.1.0
+  sitecoreVersion : "10.1.1"              # Supported versions - 9.0.2, 9.1.1, 9.2.0, 9.3.0, 10.0.0, 10.1.0, 10.1.1
   isUniqueConfigs: "true"                 # [true/false] 
-  configurationMode: "XP|XCONNECT|COMMERCE"         # ["XP" "XCONNECT" "COMMERCE" "XP|XCONNECT|COMMERCE"]
+  configurationMode: "XP"                 # ["XP" "XCONNECT" "COMMERCE" "XP|XCONNECT|COMMERCE"]
   isAzurePaaS: "true"
+  isSxa: "true"                           # Generates two additional search indexes for SXA
   Commerce:
     CommerceServicesPostfix: "Sc9"
     isXCSwitchOnRebuild: "false"

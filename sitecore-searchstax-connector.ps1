@@ -8,6 +8,7 @@ $start_time = Get-Date
 $collections = @("_master_index","_core_index","_web_index","_marketingdefinitions_master","_marketingdefinitions_web","_marketing_asset_index_master","_marketing_asset_index_web","_testing_index","_suggested_test_index","_fxm_master_index","_fxm_web_index" )
 $collections93 = @("_master_index","_core_index","_web_index","_marketingdefinitions_master","_marketingdefinitions_web","_marketing_asset_index_master","_marketing_asset_index_web","_testing_index","_suggested_test_index","_fxm_master_index","_fxm_web_index","_personalization_index" )
 $collectionsXConnect = @("xdb_internal", "xdb_rebuild_internal")
+$collectionsSXA = @("_sxa_master_index", "_sxa_web_index")
 $searchstaxUrl = 'https://app.searchstax.com'
 $authUrl = -join($searchstaxUrl, '/api/rest/v1/obtain-auth-token/')
 # DEFAULT VALUES AS SUGGESTED BY SITECORE
@@ -35,6 +36,7 @@ function Init {
     $global:sitecoreVersion=$yaml.settings.sitecoreVersion
     $global:isUniqueConfigs=Get-BooleanValue $yaml.settings.isUniqueConfigs
     $global:isAzurePaaS=Get-BooleanValue $yaml.settings.isAzurePaaS
+    $global:isSxa=Get-BooleanValue $yaml.settings.isSxa
 
     # Get configuration mode
     $global:configurationMode=$yaml.settings.configurationMode
@@ -196,9 +198,16 @@ if ($sitecoreVersion -eq "9.0.2") {
 } Elseif ($sitecoreVersion -eq "10.1.0") {
     $solrVersion = "8.4.0"
     $global:coll = $collections93
+} Elseif ($sitecoreVersion -eq "10.1.1") {
+    $solrVersion = "8.4.0"
+    $global:coll = $collections93
 }
  else {
-    Write-Error -Message "Unsupported sitecore version specified. Supported versions are 9.0.2, 9.1.1, 9.2.0, 9.3.0, 10.0.0, and 10.1.0" -ErrorAction Stop
+    Write-Error -Message "Unsupported sitecore version specified. Supported versions are 9.0.2, 9.1.1, 9.2.0, 9.3.0, 10.0.0, 10.1.0, 10.1.1" -ErrorAction Stop
+}
+
+if ($global:isSxa -eq "true") {
+    $global:coll += $collectionsSXA
 }
 
 
